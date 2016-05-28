@@ -10,6 +10,7 @@ namespace Order_Matrix_Lines
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("test");
         }
     }
 }
