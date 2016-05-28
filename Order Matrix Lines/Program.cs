@@ -11,13 +11,13 @@ namespace Order_Matrix_Lines
     {
         public static List<List<int>> read_matrix(string arg)
         {
-            List<int> line = null;
-            List<List<int>> matrix = null;
+            List<List<int>> matrix = new List<List<int>>();
             String buffer;
             using (StreamReader sr = new StreamReader(arg))
             {
                 while ((buffer = sr.ReadLine()) != null)
                 {
+                    List<int> line = new List<int>();
                     string[] elements = buffer.Split(',');
                     foreach(string elem in elements)
                     {
@@ -39,15 +39,18 @@ namespace Order_Matrix_Lines
             {
                 foreach(int elem in list)
                 {
-                    Console.Write(elem);
+                    Console.Write(elem + ",");
                 }
-                Console.Write("\n");
+                Console.WriteLine();
             }
         }
 
         static void Main(string[] args)
         {
-            read_matrix(args[0].ToString());
+            List<List<int>> mymatrix;
+            mymatrix = read_matrix(args[0].ToString());
+            nice_print(mymatrix);
+            Console.ReadKey();
             
         }
     }
