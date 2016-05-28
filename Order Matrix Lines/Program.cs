@@ -11,19 +11,19 @@ namespace Order_Matrix_Lines
     {
         public static List<int> bubbleSort(List<int> alist)
         {
+            int size = alist.Count;
             bool flag = true;
-            int temp;
-            int numLength = alist.Count;
-            for (int passnum=1; (passnum <= (numLength-1) && flag); passnum++)
+            int temp = 0;
+            for (int j = 1; (j <= (size - 1) && flag); j++)
             {
                 flag = false;
-                for(int i=1;i<(numLength-1);i++)
+                for (int i = 0; i < size - 1; i++)
                 {
-                    if(alist[i+1] > alist[i])
+                    if (alist[i] > alist[i + 1])
                     {
-                        temp = alist[i];
-                        alist[i] = alist[i + 1];
-                        alist[i + 1] = temp;
+                        temp = alist[i + 1];
+                        alist[i + 1] = alist[i];
+                        alist[i] = temp;
                         flag = true;
                     }
                 }
@@ -57,12 +57,20 @@ namespace Order_Matrix_Lines
         public static List<List<int>> reorder_matrix(List<List<int>> matrix)
         {
             int i = 0;
-            foreach(var line in matrix)
+            /*foreach(List<int> line in matrix)
             {
                 matrix[i] = bubbleSort(line);
                 i++;
             }
-            return matrix;
+            */
+            List<List<int>> newmatrix = new List<List<int>>();
+            for (i = 0; i <= matrix.Count - 1; i++)
+            {
+                List<int> tempList = bubbleSort(matrix[i]);
+                newmatrix.Add(tempList);
+            }
+
+            return newmatrix;
         }
 
         public static void nice_print(List<List<int>> matrix)
